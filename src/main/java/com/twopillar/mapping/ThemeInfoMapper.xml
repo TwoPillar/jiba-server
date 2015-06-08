@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.twopillar.dao.ThemeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.twopillar.entity.ThemeInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_info_id" property="userInfoId" jdbcType="INTEGER" />
+    <result column="theme_name" property="themeName" jdbcType="VARCHAR" />
+    <result column="is_sticky_post" property="isStickyPost" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="delete" property="delete" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_info_id, theme_name, is_sticky_post, create_time, delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from theme_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from theme_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.twopillar.entity.ThemeInfo" >
+    insert into theme_info (id, user_info_id, theme_name, 
+      is_sticky_post, create_time, delete
+      )
+    values (#{id,jdbcType=INTEGER}, #{userInfoId,jdbcType=INTEGER}, #{themeName,jdbcType=VARCHAR}, 
+      #{isStickyPost,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{delete,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.twopillar.entity.ThemeInfo" >
+    insert into theme_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="themeName != null" >
+        theme_name,
+      </if>
+      <if test="isStickyPost != null" >
+        is_sticky_post,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="delete != null" >
+        delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="themeName != null" >
+        #{themeName,jdbcType=VARCHAR},
+      </if>
+      <if test="isStickyPost != null" >
+        #{isStickyPost,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null" >
+        #{delete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.twopillar.entity.ThemeInfo" >
+    update theme_info
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="themeName != null" >
+        theme_name = #{themeName,jdbcType=VARCHAR},
+      </if>
+      <if test="isStickyPost != null" >
+        is_sticky_post = #{isStickyPost,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delete != null" >
+        delete = #{delete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.twopillar.entity.ThemeInfo" >
+    update theme_info
+    set user_info_id = #{userInfoId,jdbcType=INTEGER},
+      theme_name = #{themeName,jdbcType=VARCHAR},
+      is_sticky_post = #{isStickyPost,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete = #{delete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
