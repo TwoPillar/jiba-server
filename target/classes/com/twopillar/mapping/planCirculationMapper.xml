@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.twopillar.dao.planCirculationMapper" >
+  <resultMap id="BaseResultMap" type="com.twopillar.entity.planCirculation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="plan_info_id" property="planInfoId" jdbcType="INTEGER" />
+    <result column="circulation_number" property="circulationNumber" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, plan_info_id, circulation_number, type, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from plan_circulation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from plan_circulation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.twopillar.entity.planCirculation" >
+    insert into plan_circulation (id, plan_info_id, circulation_number, 
+      type, description)
+    values (#{id,jdbcType=INTEGER}, #{planInfoId,jdbcType=INTEGER}, #{circulationNumber,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.twopillar.entity.planCirculation" >
+    insert into plan_circulation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="planInfoId != null" >
+        plan_info_id,
+      </if>
+      <if test="circulationNumber != null" >
+        circulation_number,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planInfoId != null" >
+        #{planInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="circulationNumber != null" >
+        #{circulationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.twopillar.entity.planCirculation" >
+    update plan_circulation
+    <set >
+      <if test="planInfoId != null" >
+        plan_info_id = #{planInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="circulationNumber != null" >
+        circulation_number = #{circulationNumber,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.twopillar.entity.planCirculation" >
+    update plan_circulation
+    set plan_info_id = #{planInfoId,jdbcType=INTEGER},
+      circulation_number = #{circulationNumber,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

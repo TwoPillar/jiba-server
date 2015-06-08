@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.twopillar.dao.PlanCirculationHasActionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.twopillar.entity.PlanCirculationHasActionInfo" >
+    <id column="plan_circulation_id" property="planCirculationId" jdbcType="INTEGER" />
+    <id column="action_info_id" property="actionInfoId" jdbcType="INTEGER" />
+    <result column="sets" property="sets" jdbcType="INTEGER" />
+    <result column="reps" property="reps" jdbcType="INTEGER" />
+    <result column="seq" property="seq" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    plan_circulation_id, action_info_id, sets, reps, seq
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.twopillar.entity.PlanCirculationHasActionInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from plan_circulation_has_action_info
+    where plan_circulation_id = #{planCirculationId,jdbcType=INTEGER}
+      and action_info_id = #{actionInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.twopillar.entity.PlanCirculationHasActionInfoKey" >
+    delete from plan_circulation_has_action_info
+    where plan_circulation_id = #{planCirculationId,jdbcType=INTEGER}
+      and action_info_id = #{actionInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.twopillar.entity.PlanCirculationHasActionInfo" >
+    insert into plan_circulation_has_action_info (plan_circulation_id, action_info_id, 
+      sets, reps, seq)
+    values (#{planCirculationId,jdbcType=INTEGER}, #{actionInfoId,jdbcType=INTEGER}, 
+      #{sets,jdbcType=INTEGER}, #{reps,jdbcType=INTEGER}, #{seq,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.twopillar.entity.PlanCirculationHasActionInfo" >
+    insert into plan_circulation_has_action_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="planCirculationId != null" >
+        plan_circulation_id,
+      </if>
+      <if test="actionInfoId != null" >
+        action_info_id,
+      </if>
+      <if test="sets != null" >
+        sets,
+      </if>
+      <if test="reps != null" >
+        reps,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="planCirculationId != null" >
+        #{planCirculationId,jdbcType=INTEGER},
+      </if>
+      <if test="actionInfoId != null" >
+        #{actionInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="sets != null" >
+        #{sets,jdbcType=INTEGER},
+      </if>
+      <if test="reps != null" >
+        #{reps,jdbcType=INTEGER},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.twopillar.entity.PlanCirculationHasActionInfo" >
+    update plan_circulation_has_action_info
+    <set >
+      <if test="sets != null" >
+        sets = #{sets,jdbcType=INTEGER},
+      </if>
+      <if test="reps != null" >
+        reps = #{reps,jdbcType=INTEGER},
+      </if>
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=INTEGER},
+      </if>
+    </set>
+    where plan_circulation_id = #{planCirculationId,jdbcType=INTEGER}
+      and action_info_id = #{actionInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.twopillar.entity.PlanCirculationHasActionInfo" >
+    update plan_circulation_has_action_info
+    set sets = #{sets,jdbcType=INTEGER},
+      reps = #{reps,jdbcType=INTEGER},
+      seq = #{seq,jdbcType=INTEGER}
+    where plan_circulation_id = #{planCirculationId,jdbcType=INTEGER}
+      and action_info_id = #{actionInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

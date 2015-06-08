@@ -6,6 +6,6 @@
   </head>
   
   <body>
-    ${user.nickName}
+    jiba test
   </body>
 </html>

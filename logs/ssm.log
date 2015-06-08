@@ -739,3 +739,9 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 [INFO] [2015-06-08 09:40:28][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 [INFO] [2015-06-08 09:40:31][jiba.TestMyBatis]{"gender":"ee","id":1,"isVip":true,"level":1,"nickName":"11","password":"212121","phone":1212121,"portrait":"fsfs"}
 [INFO] [2015-06-08 09:40:31][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5c78bca: startup date [Mon Jun 08 09:40:28 CST 2015]; root of context hierarchy
+[INFO] [2015-06-08 10:35:19][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2015-06-08 10:35:19][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6faa7dbc: startup date [Mon Jun 08 10:35:19 CST 2015]; root of context hierarchy
+[INFO] [2015-06-08 10:35:19][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2015-06-08 10:35:19][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2015-06-08 10:35:26][jiba.TestMyBatis]{"gender":"ee","id":1,"isVip":true,"level":1,"nickName":"11","password":"212121","phone":1212121,"portrait":"fsfs"}
+[INFO] [2015-06-08 10:35:26][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6faa7dbc: startup date [Mon Jun 08 10:35:19 CST 2015]; root of context hierarchy
