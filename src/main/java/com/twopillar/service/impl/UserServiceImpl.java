@@ -18,5 +18,16 @@ public class UserServiceImpl implements IUserService{
 	public UserInfo getUserById(int id) {
 		return userInfoMapper.selectByPrimaryKey(id); 
 	}
+	
+	@Override
+	public UserInfo getUserInfoByPhone(Integer phone) {
+		
+		return userInfoMapper.selectByPhone(phone);
+	}
 
+	@Override
+	public UserInfo registerUser(UserInfo userInfo) {
+		int userId = userInfoMapper.insertSelective(userInfo);
+		return userInfoMapper.selectByPrimaryKey(userId);
+	}
 }

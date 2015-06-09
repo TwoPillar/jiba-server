@@ -16,11 +16,19 @@ public class UserController {
 	@Resource
 	private IUserService userService;
 	
-	@RequestMapping("/showUser")
-	public String toIndex(HttpServletRequest request,Model model){
-		int userId = Integer.parseInt(request.getParameter("id"));
-		UserInfo user = this.userService.getUserById(userId);
-		model.addAttribute("user", user);
-		return "showUser";
+	public UserInfo register(HttpServletRequest request,Model model) {
+		
+		int phone = Integer.parseInt(request.getParameter("phone"));
+		String password = request.getParameter("password");
+		UserInfo userInfo = userService.getUserInfoByPhone(phone);
+		if(userInfo != null) {
+			return userInfo;
+		}else {
+			userInfo = new UserInfo();
+			userInfo.setPhone(phone);
+			userInfo.setPassword(password);
+			return userService.registerUser(userInfo);
+		}
 	}
+
 }

@@ -1,5 +1,7 @@
 package com.twopillar.dao;
 
+import java.util.List;
+
 import com.twopillar.entity.ActionInfo;
 
 public interface ActionInfoMapper {
@@ -14,4 +16,6 @@ public interface ActionInfoMapper {
     int updateByPrimaryKeySelective(ActionInfo record);
 
     int updateByPrimaryKey(ActionInfo record);
+    
+    List<ActionInfo> selectByType(String type);
 }
