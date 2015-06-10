@@ -4,12 +4,13 @@
   <resultMap id="BaseResultMap" type="com.twopillar.entity.ActionInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="action_name" property="actionName" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, action_name, url, description, type
+    id, action_name, image_url, video_url, description, type
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,10 +29,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.twopillar.entity.ActionInfo" >
-    insert into action_info (id, action_name, url, 
-      description, type)
-    values (#{id,jdbcType=INTEGER}, #{actionName,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR})
+    insert into action_info (id, action_name, image_url, 
+      video_url, description, type
+      )
+    values (#{id,jdbcType=INTEGER}, #{actionName,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{videoUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.twopillar.entity.ActionInfo" >
     insert into action_info
@@ -42,8 +45,11 @@
       <if test="actionName != null" >
         action_name,
       </if>
-      <if test="url != null" >
-        url,
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
       </if>
       <if test="description != null" >
         description,
@@ -59,8 +65,11 @@
       <if test="actionName != null" >
         #{actionName,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -76,8 +85,11 @@
       <if test="actionName != null" >
         action_name = #{actionName,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
@@ -91,7 +103,8 @@
   <update id="updateByPrimaryKey" parameterType="com.twopillar.entity.ActionInfo" >
     update action_info
     set action_name = #{actionName,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

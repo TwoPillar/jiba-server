@@ -5,7 +5,9 @@ public class ActionInfo {
 
     private String actionName;
 
-    private String url;
+    private String imageUrl;
+
+    private String videoUrl;
 
     private String description;
 
@@ -27,12 +29,20 @@ public class ActionInfo {
         this.actionName = actionName == null ? null : actionName.trim();
     }
 
-    public String getUrl() {
-        return url;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl == null ? null : imageUrl.trim();
+    }
+
+    public String getvideoUrl() {
+        return videoUrl;
+    }
+
+    public void setvideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl == null ? null : videoUrl.trim();
     }
 
     public String getDescription() {
