@@ -10,7 +10,7 @@ public interface IUserService {
 	 * @return
 	 * 通过手机号查找用户
 	 */
-	public UserInfo getUserInfoByPhone(Integer phone);
+	public UserInfo getUserInfoByPhone(String phone);
 	
 	/**
 	 * @param userInfo

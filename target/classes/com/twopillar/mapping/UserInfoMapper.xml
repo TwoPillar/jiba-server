@@ -6,7 +6,7 @@
     <result column="portrait" property="portrait" jdbcType="VARCHAR" />
     <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="is_vip" property="isVip" jdbcType="BIT" />
     <result column="level" property="level" jdbcType="INTEGER" />
@@ -20,11 +20,11 @@
     from user_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
    select 
     <include refid="Base_Column_List" />
     from user_info
-    where phone = #{phone,jdbcType=INTEGER}
+    where phone = #{phone,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_info
@@ -38,7 +38,7 @@
       #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
       #{isVip,jdbcType=BIT}, #{level,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.twopillar.entity.UserInfo" >
+  <insert id="insertSelective" parameterType="com.twopillar.entity.UserInfo" useGeneratedKeys="true" keyProperty="id">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
         #{gender,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -106,7 +106,7 @@
         gender = #{gender,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -125,7 +125,7 @@
     set portrait = #{portrait,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       is_vip = #{isVip,jdbcType=BIT},
       level = #{level,jdbcType=INTEGER}

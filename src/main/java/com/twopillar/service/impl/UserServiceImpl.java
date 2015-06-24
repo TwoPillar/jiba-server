@@ -20,14 +20,14 @@ public class UserServiceImpl implements IUserService{
 	}
 	
 	@Override
-	public UserInfo getUserInfoByPhone(Integer phone) {
+	public UserInfo getUserInfoByPhone(String phone) {
 		
 		return userInfoMapper.selectByPhone(phone);
 	}
 
 	@Override
 	public UserInfo registerUser(UserInfo userInfo) {
-		int userId = userInfoMapper.insertSelective(userInfo);
-		return userInfoMapper.selectByPrimaryKey(userId);
+		userInfoMapper.insertSelective(userInfo);
+		return userInfoMapper.selectByPrimaryKey(userInfo.getId());
 	}
 }
